@@ -1,0 +1,78 @@
+<br>
+<br>
+    <div class="cont overflow-y-auto">
+        <form *ngIf="signup" [formGroup]="signup" (ngSubmit)="onSubmit()">
+            <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <label>
+                    <span>Full name</span>
+                    <input type="text" formControlName="FullName" />
+                    <div *ngIf="FullName?.touched && FullName?.invalid" style="color: red; font-size: 0.8rem;">Full name is required</div>
+
+                </label>
+                <label>
+                    <span>User</span><br>
+                    <select id="user-select" formControlName="User">
+                        <option value="">  Select Role   </option>
+                        <option value="Developer">Developer</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Team Leader">Team Leader</option>
+                      </select> 
+                    <div *ngIf="User?.touched && User?.invalid" style="color: red; font-size: 0.8rem;">Select User</div>
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email"  formControlName="Email"/>
+                    <button type="button" class="otp" style="color: black;" (click)="OtpSend()">Send OTP <i class="bi bi-check-circle-fill" *ngIf="otpStatus" style="font-size: 1rem; color: green;"></i></button>
+                    <div *ngIf="Email?.touched && Email?.invalid" style="color: red; font-size: 0.8rem;">Email ID is required</div>                
+                </label>
+                <label>
+                    <span>OTP</span>
+                    <span><input type="tel" maxlength="6" formControlName="OTP" (input)="onOtpInputChange($event)"/><i class="bi bi-check-circle-fill" *ngIf="enterdOtpStatus" style="font-size: 1rem; color: green;"></i><i class="bi bi-x-circle-fill" *ngIf="otpfalseicon" style="font-size: 1rem; color: red;"></i></span>
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" formControlName="Password" />
+                    <div *ngIf="Password?.touched && Password?.invalid" style="color: red; font-size: 0.8rem;">Password is required</div>
+                    <div *ngIf="Password?.hasError('minlength')" style="color: red; font-size: 0.8rem;">Password must be at least 6 characters</div>
+                    <div *ngIf="Password?.hasError('pattern')" style="color: red; font-size: 0.8rem;">Password must contain Atleast one letters, numbers and special charachter</div>
+                </label>
+                <button type="submit" class="submit" [disabled]="!signup.valid">Sign Up</button>
+                
+            </div>
+        </form>
+        
+        <div class="sub-cont">
+            <div class="img">
+                <!-- <div class="img__text m--up">
+                 
+                    <h3>Don't have an account? Please Sign up!</h3>
+                </div> -->
+                <div class="img__text m--in">
+                
+                    <h3>If you already has an account, just sign in.</h3>
+                </div>
+                <div class="img__btn" (click)="SignInRoute()">
+                    <!-- <span class="m--up" >Sign Up</span> -->
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+            <!-- <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <label>
+                    <span>Name</span>
+                    <input type="text" />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" />
+                </label>
+                <button type="button" class="submit">Sign Up</button>
+                
+            </div> -->
+        </div>
+    </div>
