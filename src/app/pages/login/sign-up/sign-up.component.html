@@ -1,0 +1,66 @@
+<br>
+<br>
+    <div class="cont">
+        <form *ngIf="signup" [formGroup]="signup" (ngSubmit)="onSubmit()">
+            <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <label>
+                    <span>First name</span>
+                    <input type="text" formControlName="FirstName" />
+                </label>
+                <label>
+                    <span>Last name</span>
+                    <input type="text" formControlName="LastName" />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email"  formControlName="Email"/>
+                    <button type="button" class="otp" style="color: black;" (click)="OtpSend()">Send OTP <i class="bi bi-check-circle-fill" *ngIf="otpStatus" style="font-size: 1rem; color: green;"></i></button>
+                </label>
+                <label>
+                    <span>OTP</span>
+                    <span><input type="tel" maxlength="6" formControlName="OTP" (input)="onOtpInputChange($event)"/><i class="bi bi-check-circle-fill" *ngIf="enterdOtpStatus" style="font-size: 1rem; color: green;"></i><i class="bi bi-x-circle-fill" *ngIf="otpfalseicon" style="font-size: 1rem; color: red;"></i></span>
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" formControlName="Password" />
+                </label>
+                <button type="submit" class="submit" [disabled]="!signup.valid">Sign Up</button>
+                
+            </div>
+        </form>
+        
+        <div class="sub-cont">
+            <div class="img">
+                <!-- <div class="img__text m--up">
+                 
+                    <h3>Don't have an account? Please Sign up!</h3>
+                </div> -->
+                <div class="img__text m--in">
+                
+                    <h3>If you already has an account, just sign in.</h3>
+                </div>
+                <div class="img__btn" (click)="SignInRoute()">
+                    <!-- <span class="m--up" >Sign Up</span> -->
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+            <!-- <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <label>
+                    <span>Name</span>
+                    <input type="text" />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" />
+                </label>
+                <button type="button" class="submit">Sign Up</button>
+                
+            </div> -->
+        </div>
+    </div>
